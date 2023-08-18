@@ -13,6 +13,10 @@ import { CATEGORIES, TASKS } from "../data";
 function App() {
   const [ tasks, setTasks ] = useState(TASKS)
   const [selectedCategory, setSelectedCategory] = useState("All")
+
+  function onTaskFormSubmit(taskObj) {
+    setTasks(tasks => ([...tasks, taskObj]))
+  }
   return (
     <div className="App">
       <h2>My tasks</h2>
@@ -21,7 +25,7 @@ function App() {
         selectedCategory={selectedCategory} 
         setSelectedCategory={setSelectedCategory} 
       />
-      <NewTaskForm />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit} />
       <TaskList tasks={tasks} setTasks={setTasks} selectedCategory={selectedCategory} />
     </div>
   );

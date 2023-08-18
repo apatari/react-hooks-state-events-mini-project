@@ -12,6 +12,7 @@ function CategoryFilter({ categories, selectedCategory, setSelectedCategory }) {
       {categories.map(category => {
         return <button 
           className={(category === selectedCategory) ? "selected" : ""}
+          name={category}
           key={category} 
           category={category}
           onClick={handleClick}>
