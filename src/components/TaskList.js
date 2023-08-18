@@ -2,9 +2,13 @@ import React from "react";
 import { v4 as uuid } from "uuid";
 import Task from "./Task";
 
-function TaskList( { tasks, setTasks }) {
+function TaskList( { tasks, setTasks, selectedCategory }) {
 
-  const tasksToDisplay = tasks.slice()
+  const tasksToDisplay = tasks.filter(task => { 
+    if (selectedCategory === "All") {
+      return true
+    }
+    return (task.category === selectedCategory )})
   
   return (
     <div className="tasks">
